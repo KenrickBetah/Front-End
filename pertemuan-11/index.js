@@ -1,0 +1,74 @@
+// // import { fullName, numbers, John} from "./utils.js";
+
+// // console.log(fullName);
+// // console.log(numbers)
+// // console.log(John);
+
+// //Asynchronous JS
+
+// //synchronous -> single thread -> blocking
+// // console.log("Proses 1");
+// // console.log("proses 2");
+// // console.log("Proses 3");
+// // console.log("Proses 4");
+
+// // asynchronous -> multi thread -> non blocking
+// // Ada 2 macam async:
+// // 1. Parallel
+// // setTimeout(() => {
+// //     console.log("Proses 1");
+// // },3000);
+// // console.log("Proses 2");
+// // setTimeout(() => {
+// //     console.log("Proses 3");
+// // },4000);
+// // console.log("Proses 4");
+
+// // 2. Concurrent
+// // 2A. Callback
+// setTimeout (() =>{
+//     console.log("Proses 1");
+//     setTimeout(() =>{
+//         console.log("Proses 2");
+//         setTimeout(() =>{
+//             console.log("Proses 3");
+//             setTimeout(() => {
+//                 console.log("Proses 4");
+//             },3000);
+//         },3000);
+//     },3000);
+// },3000);
+
+// // 2B. Promise
+let condition = false;
+const newPromise = new Promise((resolve,reject) => {
+    if (condition){
+
+        resolve("Berhasil");
+    }else {
+        reject("Gagal")
+    }
+});
+
+// Pakai promise
+// 1. then - catch
+
+// newPromise.then((result) => {
+//     console.log(result);
+// })
+//     .catch((error) => {
+//         console.log(error);
+// })
+
+//2. async - await (ES7)
+// async-await digunakan pada fungsi
+
+const consumePromise = async () =>{
+    try{
+    let result = await newPromise;
+    console.log(result);
+    } catch (error){
+        console.log(error);
+    } 
+};
+consumePromise()
